@@ -1,3 +1,4 @@
-#eShop + FireBase
+#  eShop + Firebase
 
-Create an online shop using SwiftUI and FireBase
+>>>  Create an online shop using SwiftUI and FireBase
+
