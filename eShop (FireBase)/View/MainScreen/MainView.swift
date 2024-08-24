@@ -11,11 +11,11 @@ import FirebaseFirestoreSwift
 
 struct MainView: View {
     
-    //MARK: Properties
+    //MARK: - Properties
     @FirestoreQuery(collectionPath: "eShopDB") var items: [Product]
     var columns = Array(repeating: GridItem(), count: 2)
     
-    //MARK: Body
+    //MARK: - Body
     var body: some View {
         NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
@@ -25,6 +25,11 @@ struct MainView: View {
                     }
                 }
             }
+            .padding(.horizontal, 10)
+            .background(.secondary.opacity(0.15))
+            .shadow(color: .black.opacity(0.15), radius: 5)
+            
+            
             
             //MARK: NavigationBar
             .navigationTitle("Products")

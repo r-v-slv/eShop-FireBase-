@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ProductImageView: View {
     
-    //MARK: Properties
+    //MARK: - Properties
     let url: URL
     let width: CGFloat
     let height: CGFloat
     
-    
+    //MARK: - Body
     var body: some View {
         AsyncImage(url: url) { image in
             image

@@ -1,5 +1,5 @@
 //
-//  CartView.swift
+//  FavouritesView.swift
 //  eShop (FireBase)
 //
 //  Created by SLV on 24.08.2024.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct CartView: View {
+struct FavouritesView: View {
     var body: some View {
         VStack {
             
         }
-        .navigationTitle("Cart")
+        .navigationTitle("Favourites")
     }
 }
 
-#Preview {
-    CartView()
-}
+//#Preview {
+//    FavouritesView()
+//}
