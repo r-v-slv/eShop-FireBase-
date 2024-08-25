@@ -15,6 +15,7 @@ struct CartView: View {
             
         }
         .navigationTitle("Cart")
+        .background(.secondary.opacity(0.04))
     }
 }
 

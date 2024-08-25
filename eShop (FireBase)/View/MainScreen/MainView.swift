@@ -12,8 +12,10 @@ import FirebaseFirestoreSwift
 struct MainView: View {
     
     //MARK: - Properties
+    @EnvironmentObject var vm: ViewModel
     @FirestoreQuery(collectionPath: "eShopDB") var items: [Product]
     var columns = Array(repeating: GridItem(), count: 2)
+    
     
     //MARK: - Body
     var body: some View {
@@ -21,28 +23,31 @@ struct MainView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVGrid(columns: columns ) {
                     ForEach(items) { item in
-                        ProductCardView(product: item)
+                        NavigationLink(destination: ProductDetailView(product: item)) {
+                            ProductCardView(product: item)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
             }
             .padding(.horizontal, 10)
-            .background(.secondary.opacity(0.15))
+            .background(.secondary.opacity(0.04))
             .shadow(color: .black.opacity(0.15), radius: 5)
             
             
             
-            //MARK: NavigationBar
+            /// NavigationBar
             .navigationTitle("Products")
             .toolbar {
-                //MARK: Favourites
+                /// Favourites
                 ToolbarItem(placement: .topBarLeading) {
-                    NavigationLink(destination: FavouritesView()) {
+                    NavigationLink(destination: FavoritesView()) {
                         Image(systemName: "heart.fill")
                             .font(.title2)
                     }
                     .buttonStyle(.plain)
                 }
-                //MARK: Cart
+                /// Cart
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink(destination: CartView()) {
                         Image(systemName: "cart.fill")
@@ -57,4 +62,5 @@ struct MainView: View {
 
 #Preview {
     MainView()
+        .environmentObject(ViewModel())
 }

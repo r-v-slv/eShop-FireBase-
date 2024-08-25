@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductCardView: View {
     
     //MARK: - Properties
+    @EnvironmentObject var vm: ViewModel
     let product: Product
     
     
@@ -26,7 +27,7 @@ struct ProductCardView: View {
                     
                     //MARK:  Favourite button on productCard
                     Button(action: {
-    //                    product.isFavorite = true
+                        vm.toggleFavorite(product: product)
                     }, label: {
                         Image(systemName: "heart.fill")
                             .padding(7.5)
@@ -64,14 +65,15 @@ struct ProductCardView: View {
 
 #Preview {
     ProductCardView(
-        product: Product(
-            name: "Apple Watch Series 9",
-            description: "WatchWatchWatchWatchWatchWatch",
-            image:
-                "https://firebasestorage.googleapis.com/v0/b/eshop-firebase-9d4cd.appspot.com/o/eShop%2Fstore-card-40-ipad-air-202405.jpeg?alt=media&token=5783ab9e-d36c-4b89-b680-a65bf06cd7d4",
-            price: 999,
-            quantity: 5,
-            isFavorite: false
-        )
-    )
+           product: Product(
+               name: "Apple Watch Series 9",
+               description: "WatchWatchWatchWatchWatchWatch",
+               image:
+                   "https://firebasestorage.googleapis.com/v0/b/eshop-firebase-9d4cd.appspot.com/o/eShop%2Fstore-card-40-ipad-air-202405.jpeg?alt=media&token=5783ab9e-d36c-4b89-b680-a65bf06cd7d4",
+               price: 999,
+               quantity: 5,
+               isFavorite: false
+           )
+       )
+        .environmentObject(ViewModel())
 }
