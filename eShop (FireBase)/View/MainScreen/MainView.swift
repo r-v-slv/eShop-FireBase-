@@ -27,12 +27,14 @@ struct MainView: View {
                             ProductCardView(product: item)
                         }
                         .buttonStyle(.plain)
+                        .foregroundColor(.primary)
                     }
                 }
             }
             .padding(.horizontal, 10)
             .background(.secondary.opacity(0.04))
-            .shadow(color: .black.opacity(0.15), radius: 5)
+            .shadow(color: .primary.opacity(0.2), radius: 5)
+            
             
             
             

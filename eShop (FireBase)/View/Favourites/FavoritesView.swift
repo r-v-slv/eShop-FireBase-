@@ -25,12 +25,14 @@ struct FavoritesView: View {
                         ProductCardView(product: item)
                     }
                     .buttonStyle(.plain)
+                    
                 }
             }
         }
         .padding(10)
         .background(.secondary.opacity(0.04))
         .navigationTitle("Favourites")
+        .shadow(color: .primary.opacity(0.25),radius: 9 )
     }
 }
 

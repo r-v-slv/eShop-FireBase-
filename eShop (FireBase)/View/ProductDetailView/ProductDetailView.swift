@@ -12,49 +12,49 @@ struct ProductDetailView: View {
     let product: Product
     
     var body: some View {
-        VStack {
-            if let url = URL(string: product.image) {
-                ProductImageView(url: url, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 1.7)
-                    .ignoresSafeArea()
-                    .shadow(color: .black.opacity(0.25), radius: 10, x: 0, y: 8)
-            }
-            VStack(alignment: .leading, spacing: 20) {
-                HStack {
-                    Text(product.name)
-                        .titleFont()
-                    Spacer()
-                    Text("$\(product.price)")
-                        .titleFont()
+            VStack {
+                if let url = URL(string: product.image) {
+                    ProductImageView(url: url, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 1.7)
+                        .ignoresSafeArea()
+                        .shadow(color: .primary.opacity(0.3), radius: 10, x: 0, y: 8)
                 }
-                
-                Text(product.description)
-                    .subTitleFont()
-                    .fixedSize(horizontal: false, vertical: true)
-                    .lineLimit(6)
-                
-                Spacer()
-                
-                Button {
                     
-                } label: {
-                    Text("Add to cart")
-                }
-                .frame(maxWidth: .infinity)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .padding()
-                .background(.black)
-                .clipShape(Capsule())
-                .shadow(radius: 9)
-                
-                Spacer()
-                
-            }.padding(.horizontal, 20)
-            
-                
-        }
-        .background(.secondary.opacity(0.04))
-        
+                VStack(alignment: .leading, spacing: 20) {
+                    HStack {
+                        Text(product.name)
+                            .titleFont()
+                        Spacer()
+                        Text("$\(product.price)")
+                            .titleFont()
+                    }
+                    
+                    Text(product.description)
+                        .subTitleFont()
+                        .fixedSize(horizontal: false, vertical: true)
+                        .lineLimit(6)
+                    
+                    Spacer()
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("Add to cart")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(.black)
+                    .clipShape(Capsule())
+                    .shadow(color: .primary.opacity(0.3),radius: 9 )
+                    
+                    Spacer()
+                    
+                }.padding(.horizontal, 20)
+                    .foregroundColor(.primary)
+            }
+            .background(.secondary.opacity(0.04))
+            .foregroundColor(.primary)
     }
 }
 
