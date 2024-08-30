@@ -9,52 +9,80 @@ import SwiftUI
 
 struct ProductDetailView: View {
     
+    
+    @EnvironmentObject var vm: ViewModel
     let product: Product
     
     var body: some View {
-            VStack {
+        VStack {
+            ZStack (alignment: .topLeading) {
+                
                 if let url = URL(string: product.image) {
                     ProductImageView(url: url, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 1.7)
                         .ignoresSafeArea()
-                        .shadow(color: .primary.opacity(0.3), radius: 10, x: 0, y: 8)
+                    .shadow(color: .primary.opacity(0.3), radius: 10, x: 0, y: 8)}
+                
+                HStack {
+                    BackButtonView()
+
+                    
+                    Spacer()
+                    
+                    //MARK:  Favourite button on productCard
+                    Button(action: {
+                        vm.toggleFavorite(product: product)
+                    }, label: {
+                        Image(systemName: "heart.fill")
+                            .padding(10)
+                            .foregroundColor(product.isFavorite ? .red : .white)
+                            .background(.gray)
+                            .clipShape(Circle()).opacity(0.75)
+                            .padding(10)
+                    })
                 }
-                    
-                VStack(alignment: .leading, spacing: 20) {
-                    HStack {
-                        Text(product.name)
-                            .titleFont()
-                        Spacer()
-                        Text("$\(product.price)")
-                            .titleFont()
-                    }
-                    
-                    Text(product.description)
-                        .subTitleFont()
-                        .fixedSize(horizontal: false, vertical: true)
-                        .lineLimit(6)
-                    
-                    Spacer()
-                    
-                    Button {
-                        
-                    } label: {
-                        Text("Add to cart")
-                    }
-                    .frame(maxWidth: .infinity)
-                    .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(.black)
-                    .clipShape(Capsule())
-                    .shadow(color: .primary.opacity(0.3),radius: 9 )
-                    
-                    Spacer()
-                    
-                }.padding(.horizontal, 20)
-                    .foregroundColor(.primary)
             }
-            .background(.secondary.opacity(0.04))
-            .foregroundColor(.primary)
+            
+            
+            VStack(alignment: .leading, spacing: 20) {
+                HStack {
+                    Text(product.name)
+                        .titleFont()
+                    Spacer()
+                    Text("$\(product.price)")
+                        .titleFont()
+                }
+                
+                Text(product.description)
+                    .subTitleFont()
+                    .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(6)
+                
+                Spacer()
+                
+                Button {
+                    vm.toggleFavorite(product: product)  //CHANGE!!!
+                } label: {
+                    Text("Add to cart")
+                }
+                .frame(maxWidth: .infinity)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding()
+                .background(.black)
+                .clipShape(Capsule())
+                .shadow(color: .primary.opacity(0.3),radius: 9 )
+                
+                
+                Spacer()
+                
+            }.padding(.horizontal, 20)
+                .foregroundColor(.primary)
+            
+        }
+        .background(.primary.opacity(0.09))
+        .foregroundColor(.primary)
+        .ignoresSafeArea(edges: .bottom)
+        .navigationBarBackButtonHidden()
     }
 }
 

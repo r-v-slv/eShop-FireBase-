@@ -32,7 +32,7 @@ struct MainView: View {
                 }
             }
             .padding(.horizontal, 10)
-            .background(.secondary.opacity(0.04))
+            .background(.primary.opacity(0.09))
             .shadow(color: .primary.opacity(0.2), radius: 5)
             
             
@@ -58,7 +58,7 @@ struct MainView: View {
                     .buttonStyle(.plain)
                 }
             }
-        }
+        }.accentColor(.gray)
     }
 }
 
