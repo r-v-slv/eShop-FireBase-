@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProductCardView: View {
+struct CardView: View {
     
     //MARK: - Properties
     @EnvironmentObject var vm: ViewModel
@@ -64,7 +64,7 @@ struct ProductCardView: View {
 }
 
 #Preview {
-    ProductCardView(
+    CardView(
         product: Product(
             name: "Apple Watch Series 9",
             description: "WatchWatchWatchWatchWatchWatch",

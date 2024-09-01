@@ -16,7 +16,7 @@ struct FavoritesView: View {
     @EnvironmentObject var vm: ViewModel
     @FirestoreQuery(collectionPath: "eShopDB", predicates: [.isEqualTo("isFavorite", true)]) private var favoriteItems: [Product]
     var columns = Array(repeating: GridItem(), count: 2)
-
+    
     
     
     
@@ -27,10 +27,10 @@ struct FavoritesView: View {
                 LazyVGrid(columns: columns) {
                     ForEach(favoriteItems) { item in
                         NavigationLink(destination: ProductDetailView(product: item)) {
-                            ProductCardView(product: item)
+                            CardView(product: item)
                         }
-                        .buttonStyle(.plain)
                     }
+                    .buttonStyle(.plain)
                 }
             }
             .padding(10)
@@ -42,7 +42,6 @@ struct FavoritesView: View {
                     BackButtonView()
                 }
             }
-            
         }
         .background(.primary.opacity(0.09))
         .foregroundColor(.primary)
@@ -51,7 +50,8 @@ struct FavoritesView: View {
     }
 }
 
-#Preview {
-    FavoritesView()
-        .environmentObject(ViewModel())
-}
+
+//#Preview {
+//    FavoritesView()
+//    .environmentObject(ViewModel())
+//}

@@ -8,6 +8,14 @@
 import SwiftUI
 
 extension Text {
+    func extraLargeTitleFont () -> some View {
+        self
+            .foregroundStyle(.primary)
+            .font(.system(size:21, weight: .bold, design: .rounded))
+            .opacity(0.8)
+    }
+    
+    
     func titleFont () -> some View {
         self
             .foregroundStyle(.primary)

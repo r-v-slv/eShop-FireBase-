@@ -16,12 +16,16 @@ struct BackButtonView: View {
         Button(action: {
             dismiss()
         }, label: {
-            Image(systemName: "chevron.left")
-                .padding(10)
-                .foregroundStyle(.white)
-                .background(.gray.opacity(0.5))
-                .clipShape(Circle())
-                .padding(10)
+            ZStack{
+                Circle()
+                    .frame(width: 34)
+                    .foregroundStyle(.gray.opacity(0.75))
+                Image(systemName: "chevron.left")
+                    .font(.title3)
+                    .foregroundStyle(.white)
+                    .fontWeight(.medium)
+                    .opacity(0.8)
+            }
         })
     }
 }

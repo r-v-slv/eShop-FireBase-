@@ -6,16 +6,37 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct CartView: View {
+    
+    //MARK: - Properties
+    @EnvironmentObject var vm: ViewModel
+    @FirestoreQuery(collectionPath: "eShopDB", predicates: [.isGreaterThan("quantityInCart", 0)]) private var inCartItems: [Product]
+    var columns = Array(repeating: GridItem(), count: 2)
+    
+    
     
     //MARK: - Body
     var body: some View {
         VStack {
-            
+            ScrollView (.vertical, showsIndicators: false) {
+                LazyVGrid(columns: columns) {
+                    ForEach(inCartItems) { item in
+                        CardView(product: item)
+                    }
+                }
+                .padding(.horizontal, 10)
+            }.navigationTitle("Cart")
+                .navigationBarBackButtonHidden()
+                .background(.secondary.opacity(0.04))
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        BackButtonView()
+                    }
+                }
         }
-        .navigationTitle("Cart")
-        .background(.secondary.opacity(0.04))
     }
 }
 
