@@ -14,7 +14,7 @@ struct CartView: View {
     //MARK: - Properties
     @EnvironmentObject var vm: ViewModel
     @FirestoreQuery(collectionPath: "eShopDB", predicates: [.isGreaterThan("quantityInCart", 0)]) private var inCartItems: [Product]
-    var columns = Array(repeating: GridItem(), count: 2)
+    var columns = Array(repeating: GridItem(), count: 1)
     
     
     
@@ -24,7 +24,7 @@ struct CartView: View {
             ScrollView (.vertical, showsIndicators: false) {
                 LazyVGrid(columns: columns) {
                     ForEach(inCartItems) { item in
-                        CardView(product: item)
+                        ProductCardInCartView(product: item)
                     }
                 }
                 .padding(.horizontal, 10)

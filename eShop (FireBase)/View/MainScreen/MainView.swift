@@ -24,7 +24,7 @@ struct MainView: View {
                 LazyVGrid(columns: columns ) {
                     ForEach(items) { item in
                         NavigationLink(destination: ProductDetailView(product: item)) {
-                            CardView(product: item)
+                            ProductCardView(product: item)
                         }
                         .buttonStyle(.plain)
                         .foregroundColor(.primary)
@@ -58,12 +58,14 @@ struct MainView: View {
                     .buttonStyle(.plain)
                 }
             }
-        }.accentColor(.gray)
-            
+        }
+        .accentColor(.gray)
+        
     }
 }
 
-//#Preview {
-//    MainView()
-//        .environmentObject(ViewModel())
-//}
+
+#Preview {
+    MainView()
+        .environmentObject(ViewModel())
+}

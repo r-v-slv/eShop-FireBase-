@@ -27,7 +27,7 @@ struct FavoritesView: View {
                 LazyVGrid(columns: columns) {
                     ForEach(favoriteItems) { item in
                         NavigationLink(destination: ProductDetailView(product: item)) {
-                            CardView(product: item)
+                            ProductCardView(product: item)
                         }
                     }
                     .buttonStyle(.plain)

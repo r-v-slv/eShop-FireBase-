@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct ProductCardView: View {
     
     //MARK: - Properties
     @EnvironmentObject var vm: ViewModel
@@ -26,16 +26,7 @@ struct CardView: View {
                     }
                     
                     //MARK:  Favourite button on productCard
-                    Button(action: {
-                        vm.toggleFavorite(product: product)
-                    }, label: {
-                        Image(systemName: "heart.fill")
-                            .padding(10)
-                            .foregroundColor(product.isFavorite ? .red : .white)
-                            .background(.gray)
-                            .clipShape(Circle()).opacity(0.75)
-                            .padding(10)
-                    })
+                    FavoritesButtonView(product: product)
                     
                 })
                 
@@ -64,7 +55,7 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(
+    ProductCardView(
         product: Product(
             name: "Apple Watch Series 9",
             description: "WatchWatchWatchWatchWatchWatch",
@@ -77,3 +68,5 @@ struct CardView: View {
     )
     .environmentObject(ViewModel())
 }
+
+
