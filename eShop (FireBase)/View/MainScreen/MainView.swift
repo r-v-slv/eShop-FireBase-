@@ -42,13 +42,15 @@ struct MainView: View {
             .navigationTitle("Products")
             .toolbar {
                 /// Favourites
-                ToolbarItem(placement: .topBarLeading) {
+                ToolbarItem (placement: .topBarLeading) {
                     NavigationLink(destination: FavoritesView()) {
                         Image(systemName: "heart.fill")
                             .font(.title2)
                     }
                     .buttonStyle(.plain)
                 }
+                
+                
                 /// Cart
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink(destination: CartView()) {
@@ -57,12 +59,12 @@ struct MainView: View {
                     }
                     .buttonStyle(.plain)
                 }
-            }
+            }.accentColor(.gray)
         }
-        .accentColor(.gray)
         
     }
 }
+
 
 
 #Preview {
