@@ -39,21 +39,10 @@ struct InfoProductDetailView: View {
             
             Spacer()
             if product.quantity > 0 {
-                Button {
+                CustomMainButtonView(title: "Add to cart", disabledButton: (product.quantity == 0), ishiddenButton: true) {
                     vm.addToCart(product: product)
                 }
-                label: {
-                    Text("Add to cart")
-                }
-                .frame(maxWidth: .infinity)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .padding()
-                .background(.black)
-                .clipShape(Capsule())
-                .shadow(color: .primary.opacity(0.3),radius: 9 )
-                .disabled(product.quantity == 0)
-            }  else {
+            } else {
                 Text("Please subscribe to be informed on availability")
                     .subTitleFont()
                     .frame(maxWidth: .infinity)

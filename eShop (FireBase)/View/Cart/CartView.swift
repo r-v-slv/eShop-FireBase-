@@ -14,7 +14,7 @@ struct CartView: View {
     //MARK: - Properties
     @EnvironmentObject var vm: ViewModel
     @FirestoreQuery(collectionPath: "eShopDB", predicates: [.isGreaterThan("quantityInCart", 0)]) private var inCartItems: [Product]
-
+    
     
     
     
@@ -23,33 +23,30 @@ struct CartView: View {
     var body: some View {
         VStack {
             ScrollView (.vertical, showsIndicators: false) {
-                ForEach(inCartItems){ item in
+                ForEach(inCartItems.self){ item in
                     ProductCardInCartView(product: item)
                 }
                 
+                
                 Spacer()
                 
-                Text("Total: ... ")
-                    .padding(25)
+                
+                if inCartItems.count != 0 {
+                    Text("Total: ... ")
+                        .padding(25)
+                } else {
+                    Text("Cart is empty")
+                        .extraLargeTitleFont()
+                        .padding(UIScreen.main.bounds.height * 0.1)
+                }
                 
                 
-                Button {
-                    vm.addToCart(product: inCartItems[0]) //TO DELETE AND ADD A CORRECT FUNC
+                CustomMainButtonView(title: "Buy", disabledButton: false, ishiddenButton: (inCartItems.count != 0)) {
+                    vm.addToCart(product: inCartItems[0])
                 }
-                label: {
-                    Text("Buy")
-                }
-                .frame(maxWidth: .infinity)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .padding()
-                .background(.black)
-                .clipShape(Capsule())
-                .shadow(color: .primary.opacity(0.3),radius: 9 )
                 
                 
             }
-            
         }
         .padding(.horizontal, 10)
         .navigationTitle("Cart")
@@ -60,7 +57,6 @@ struct CartView: View {
                 BackButtonView()
             }
         }
-        
     }
 }
 
