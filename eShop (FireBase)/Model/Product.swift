@@ -19,8 +19,6 @@ struct Product: Identifiable, Codable {
     var isFavorite: Bool
     var quantityInCart: Int?
     
-    
-    
 }
 
 

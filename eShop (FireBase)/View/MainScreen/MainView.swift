@@ -40,34 +40,35 @@ struct MainView: View {
             
             /// NavigationBar
             .navigationTitle("Products")
-            .toolbar {
-                /// Favourites
-                ToolbarItem (placement: .topBarLeading) {
-                    NavigationLink(destination: FavoritesView()) {
-                        Image(systemName: "heart.fill")
-                            .font(.title2)
-                    }
-                    .buttonStyle(.plain)
-                }
-                
-                
-                /// Cart
-                ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink(destination: CartView()) {
-                        Image(systemName: "cart.fill")
-                            .font(.title2)
-                    }
-                    .buttonStyle(.plain)
-                }
+            .toolbar {MyToolBarContent()
             }.accentColor(.gray)
         }
         
     }
+    
+    
+    struct MyToolBarContent: ToolbarContent {
+        var body: some ToolbarContent {
+            ToolbarItemGroup (placement: .topBarLeading) {
+                NavigationLink(destination: FavoritesView()) {
+                    Image(systemName: "heart.fill")
+                        .font(.title2)
+                }.buttonStyle(.plain)
+            }
+            
+            
+            /// Cart
+            ToolbarItem(placement: .topBarTrailing) {
+                NavigationLink(destination: CartView()) {
+                    Image(systemName: "cart.fill")
+                        .font(.title2)
+                }.buttonStyle(.plain)
+            }
+        }
+    }
 }
 
-
-
-#Preview {
-    MainView()
-        .environmentObject(ViewModel())
-}
+//#Preview {
+//    MainView()
+//        .environmentObject(ViewModel())
+//}

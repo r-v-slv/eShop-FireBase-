@@ -14,39 +14,36 @@ struct CartView: View {
     //MARK: - Properties
     @EnvironmentObject var vm: ViewModel
     @FirestoreQuery(collectionPath: "eShopDB", predicates: [.isGreaterThan("quantityInCart", 0)]) private var inCartItems: [Product]
-    
-    
-    
+    //  var productsInCart = ProductsCollection(elements: [(item.id)!: item.quantity]);
     
     
     //MARK: - Body
     var body: some View {
         VStack {
             ScrollView (.vertical, showsIndicators: false) {
-                ForEach(inCartItems.self){ item in
+                ForEach(inCartItems){ item in
                     ProductCardInCartView(product: item)
                 }
-                
-                
-                Spacer()
-                
-                
-                if inCartItems.count != 0 {
-                    Text("Total: ... ")
-                        .padding(25)
-                } else {
-                    Text("Cart is empty")
-                        .extraLargeTitleFont()
-                        .padding(UIScreen.main.bounds.height * 0.1)
-                }
-                
-                
-                CustomMainButtonView(title: "Buy", disabledButton: false, ishiddenButton: (inCartItems.count != 0)) {
-                    vm.addToCart(product: inCartItems[0])
-                }
-                
-                
             }
+            
+            Spacer()
+            
+            if inCartItems.count != 0 {
+                Text("Total: ... ")
+                    .padding(10)
+                
+                
+            } else {
+                Text("Cart is empty")
+                    .extraLargeTitleFont()
+                    .padding(UIScreen.main.bounds.height * 0.1)
+            }
+            
+            
+            CustomMainButtonView(title: "Buy", disabledButton: false, ishiddenButton: (inCartItems.count != 0)) {
+                vm.addToCart(product: inCartItems[0])
+            }
+            
         }
         .padding(.horizontal, 10)
         .navigationTitle("Cart")
@@ -59,6 +56,7 @@ struct CartView: View {
         }
     }
 }
+
 
 
 //#Preview {
