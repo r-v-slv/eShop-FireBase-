@@ -60,6 +60,7 @@ struct ProductCardInCartView: View {
                                         .opacity(0.8)
                                 }
                             })
+                            
                         })
                        
                         Spacer()
@@ -112,7 +113,7 @@ struct ProductCardInCartView: View {
                                 }
                             })
                             .buttonStyle(.plain)
-                            .disabled(product.quantity == product.quantityInCart)
+                            .disabled(product.quantityInCart == 1)
                         }
                     }
                 }

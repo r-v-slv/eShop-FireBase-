@@ -41,7 +41,7 @@ struct CartView: View {
             
             
             CustomMainButtonView(title: "Buy", disabledButton: false, ishiddenButton: (inCartItems.count != 0)) {
-                vm.addToCart(product: inCartItems[0])
+                vm.addToColection()
             }
             
         }

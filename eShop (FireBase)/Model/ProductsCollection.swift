@@ -10,10 +10,10 @@ import Foundation
 
 
 struct ProductsCollection {
-    var elements: [String: Int]
+    var elements: [(String, Int)]
 
 
-//    init(_ elements: KeyValuePairs<String, Int>) {
-//        self.elements = Array(elements)
-//    }
+    init(_ elements: KeyValuePairs<String, Int>) {
+        self.elements = Array(elements)
+    }
 }
